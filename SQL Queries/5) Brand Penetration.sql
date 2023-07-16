@@ -5,7 +5,7 @@ select *, concat(round(total_respondents*100/sum(total_respondents) over ()), '%
 from (
 	select Current_brands, Brand_perception, count(Respondent_ID) as total_respondents
 	from fact_survey_responses
-    where Current_brands = "codex"
+	where Current_brands = "codex"
 	group by Brand_perception
 	order by total_respondents desc
     ) as brand_perception;
