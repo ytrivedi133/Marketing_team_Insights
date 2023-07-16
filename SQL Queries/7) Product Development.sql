@@ -11,12 +11,13 @@ from (
     ) as top_3_reasons_for_choosing_CodeX;
 ---------------------------------------------------------
 # b) Which aspect of taste should we focus more on improving?
-with improvements_desired as (
+with 
+    improvements_desired as (
 	select Current_brands, Improvements_desired, count(Respondent_ID) as total_respondents
 	from fact_survey_responses
 	where Current_brands = "codex"
 	group by Improvements_desired
 	order by total_respondents desc
-)
+    )
 select *, concat(round(total_respondents*100/sum(total_respondents) over ()), '%') as total_respondents_percentage
 from improvements_desired;
