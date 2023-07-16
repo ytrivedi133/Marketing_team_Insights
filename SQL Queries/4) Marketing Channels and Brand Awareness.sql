@@ -18,7 +18,7 @@ select *, concat(round(total_respondents*100/total_respondents_of_CodeX), '%') a
 from (
 	select *, sum(total_respondents) over() as total_respondents_of_CodeX
 	from top_marketing_channels_by_respondents
-	) as total_respondents_by_brand
+     ) as total_respondents_by_brand
 order by total_respondents desc;
 
 # c) List each marketing channel for all the current brands and their effectiveness.
@@ -31,5 +31,5 @@ select *, concat(round(total_respondents*100/total_respondents_by_brand), '%') a
 from (
 	select *, sum(total_respondents) over(partition by Current_brands) as total_respondents_by_brand
 	from top_marketing_channels_by_respondents
-    ) as total_respondents_by_brand
+     ) as total_respondents_by_brand
 order by total_respondents_by_brand desc, top_marketing_channels;
