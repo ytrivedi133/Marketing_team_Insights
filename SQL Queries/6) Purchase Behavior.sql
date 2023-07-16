@@ -1,5 +1,5 @@
 # 6) Purchase Behavior:
-
+---------------------------------------------------------
 # a) Where do respondents prefer to purchase energy drinks?
 with total_respondents_by_purchase_location as (
 	select Purchase_location, count(Respondent_ID) as total_respondents
@@ -9,7 +9,7 @@ with total_respondents_by_purchase_location as (
 )
 select *, concat(round(total_respondents*100/sum(total_respondents) over()), '%') as total_respondents_percentage
 from total_respondents_by_purchase_location;
-
+---------------------------------------------------------
 # b) What are the typical consumption situations for energy drinks among respondents?
 with total_respondents_by_situations as (
 	select Typical_consumption_situations, count(Respondent_ID) as total_respondents
@@ -19,7 +19,7 @@ with total_respondents_by_situations as (
 )
 select *, concat(round(total_respondents*100/sum(total_respondents) over ()), '%') as total_respondents_percentage
 from total_respondents_by_situations;
-
+---------------------------------------------------------
 # c) What factors influence respondents' purchase decisions, such as price range and limited edition packaging?
 
 # Query for price range
