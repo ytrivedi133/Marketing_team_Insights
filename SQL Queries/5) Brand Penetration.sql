@@ -1,5 +1,5 @@
 # 5) Brand Penetration:
-
+---------------------------------------------------------
 # a) What do people think about our brand (overall rating)?
 select *, concat(round(total_respondents*100/sum(total_respondents) over ()), '%') as total_respondents_percentage
 from (
@@ -9,7 +9,7 @@ from (
 	group by Brand_perception
 	order by total_respondents desc
     ) as brand_perception;
-
+---------------------------------------------------------
 # b) Which cities do we need to focus more on?
 with respondents_by_city as (
 	select Current_brands, City, count(fsr.Respondent_ID) as total_respondents
