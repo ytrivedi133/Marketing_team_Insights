@@ -1,22 +1,24 @@
 # 6) Purchase Behavior:
 ---------------------------------------------------------
 # a) Where do respondents prefer to purchase energy drinks?
-with total_respondents_by_purchase_location as (
+with 
+    total_respondents_by_purchase_location as (
 	select Purchase_location, count(Respondent_ID) as total_respondents
 	from fact_survey_responses
 	group by Purchase_location
 	order by total_respondents desc
-)
+    )
 select *, concat(round(total_respondents*100/sum(total_respondents) over()), '%') as total_respondents_percentage
 from total_respondents_by_purchase_location;
 ---------------------------------------------------------
 # b) What are the typical consumption situations for energy drinks among respondents?
-with total_respondents_by_situations as (
+with 
+    total_respondents_by_situations as (
 	select Typical_consumption_situations, count(Respondent_ID) as total_respondents
 	from fact_survey_responses
 	group by Typical_consumption_situations
 	order by total_respondents desc
-)
+    )
 select *, concat(round(total_respondents*100/sum(total_respondents) over ()), '%') as total_respondents_percentage
 from total_respondents_by_situations;
 ---------------------------------------------------------
