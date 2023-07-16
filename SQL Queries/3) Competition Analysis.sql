@@ -28,8 +28,8 @@ order by total_percent_preference_of_4_leader_brands_over_CodeX desc;
 
 # c) What is one reason for consumers over choosing energy drink brands? How effective is it? 
 with window_by_brands_and_reasons as (
-	select Reasons_for_choosing_brands, count(Respondent_ID) as total_respondents
-	from fact_survey_responses
+    select Reasons_for_choosing_brands, count(Respondent_ID) as total_respondents
+    from fact_survey_responses
     group by Reasons_for_choosing_brands
     order by total_respondents desc
 )
