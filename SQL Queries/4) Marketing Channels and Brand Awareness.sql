@@ -1,12 +1,12 @@
 # 4) Marketing Channels and Brand Awareness:
-
+---------------------------------------------------------
 # a) Which marketing channel can be used to reach more customers?
 select Current_brands, Marketing_channels, count(Respondent_ID) as respondents_by_channels
 from fact_survey_responses
 where Current_brands = "CodeX"
 group by Marketing_channels
 order by respondents_by_channels desc;
-
+---------------------------------------------------------
 # b) How effective are different marketing strategies and channels in reaching our customers?
 with top_marketing_channels_by_respondents as (
 	select Current_brands, Marketing_channels, count(Respondent_ID) as total_respondents
@@ -20,7 +20,7 @@ from (
 	from top_marketing_channels_by_respondents
      ) as total_respondents_by_brand
 order by total_respondents desc;
-
+---------------------------------------------------------
 # c) List each marketing channel for all the current brands and their effectiveness.
 with top_marketing_channels_by_respondents as (
 	select Current_brands, Marketing_channels, count(Respondent_ID) as total_respondents, rank() over(partition by Current_brands order by count(Respondent_ID) desc) as top_marketing_channels
