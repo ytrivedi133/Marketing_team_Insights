@@ -6,7 +6,7 @@ with total_respondents_by_purchase_location as (
 	from fact_survey_responses
 	group by Purchase_location
 	order by total_respondents desc
-    )
+)
 select *, concat(round(total_respondents*100/sum(total_respondents) over()), '%') as total_respondents_percentage
 from total_respondents_by_purchase_location;
 
@@ -29,7 +29,7 @@ from (
 	from fact_survey_responses
 	group by Price_range
 	order by total_respondents desc
-    ) as total_respondents_by_price;
+     ) as total_respondents_by_price;
 
 # Query for limited edition packaging
 select *, concat(round(total_respondents*100/sum(total_respondents) over()), '%') as total_respondents_percentage
@@ -38,4 +38,4 @@ from (
 	from fact_survey_responses
 	group by Limited_edition_packaging
 	order by total_respondents desc
-	) as total_respondents_by_LEP;
+     ) as total_respondents_by_LEP;
